@@ -1,0 +1,8 @@
+FROM python:3.12-bookworm
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+RUN groupadd --gid 1000 devcontainer \
+    && useradd --uid 1000 --gid devcontainer --shell /bin/bash --create-home devcontainer
+
+USER devcontainer
